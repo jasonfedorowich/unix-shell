@@ -9,8 +9,12 @@ int main() {
 
   InputHandler inputHandler;
 
-  std::cout << "$ ";
-  std::string input;
-  std::getline(std::cin, input);
-  inputHandler.readCommand(input);
+  while (!inputHandler.isKilled()) {
+    std::cout << "$ ";
+    std::string input;
+    std::getline(std::cin, input);
+    inputHandler.readCommand(input);
+  }
+
+
 }

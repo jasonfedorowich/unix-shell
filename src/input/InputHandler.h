@@ -8,10 +8,14 @@
 
 
 class InputHandler {
-    public:
-    InputHandler() = default;
+private:
+    bool killed;
+public:
+    InputHandler() : killed(false) {}
 
     void readCommand(const std::string & input);
+
+    bool isKilled() const{ return this->killed; }
 };
 
 
