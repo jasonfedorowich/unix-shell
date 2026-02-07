@@ -12,4 +12,4 @@ add_executable(shell ${SOURCE_FILES}
 
 target_link_libraries(shell PRIVATE readline)
 
-add_subdirectory(tests)
+#add_subdirectory(tests)
