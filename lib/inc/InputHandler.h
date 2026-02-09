@@ -8,14 +8,20 @@
 
 
 class InputHandler {
-private:
     bool killed;
-public:
+    static InputHandler* instance;
     InputHandler() : killed(false) {}
+public:
 
     void readCommand(const std::string & input);
 
     bool isKilled() const{ return this->killed; }
+
+    void kill() {
+        this->killed = true;
+    }
+
+    static InputHandler* getInstance();
 };
 
 
