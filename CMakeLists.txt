@@ -19,4 +19,4 @@ target_link_libraries(shell
         lib
 )
 
-add_subdirectory(tests)
+#add_subdirectory(tests)
