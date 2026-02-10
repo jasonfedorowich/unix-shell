@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
-#include "inc/InputHandler.h"
-#include "inc/Garbage.h"
+#include "../lib/inc/input/InputHandler.h"
+#include "../lib/inc/garbage/Garbage.h"
 
 static std::string newLineCharacter = "$ ";
 

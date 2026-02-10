@@ -7,16 +7,18 @@
 #include <string>
 #include <unordered_map>
 
+#include "inc/command/Context.h"
+
 
 class Action {
 public:
     virtual ~Action() = default;
 
-    virtual void execute() = 0;
+    virtual void execute(Context& context) = 0;
 };
 
 
-bool execute(const std::string& action);
+void execute(Context& context);
 
 
 #endif //SHELL_STARTER_CPP_ACTION_H

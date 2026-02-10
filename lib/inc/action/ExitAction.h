@@ -14,7 +14,7 @@ public:
 
     ~ExitAction() override = default;
 
-    void execute() override;
+    void execute(Context& context) override;
 };
 
 

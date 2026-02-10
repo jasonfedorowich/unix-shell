@@ -9,9 +9,13 @@
 #include <string>
 
 #include "Action.h"
+#include "EchoAction.h"
 #include "ExitAction.h"
 
-static std::unordered_map<std::string, Action*> builtInActions = {{"exit", new ExitAction()}};
+static std::unordered_map<std::string, Action*> builtInActions = {
+    {"exit", new ExitAction()},
+    {"echo", new EchoAction()}
+};
 
 
 #endif //SHELL_STARTER_CPP_BUILTINS_H

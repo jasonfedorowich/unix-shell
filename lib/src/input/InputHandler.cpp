@@ -2,9 +2,11 @@
 // Created by Jason Fedorowich on 2026-02-07.
 //
 
-#include "../inc/InputHandler.h"
+#include "../../inc/input/InputHandler.h"
 #include <iostream>
-#include "inc/Action.h"
+#include "../../inc/action/Action.h"
+#include "inc/command/Context.h"
+#include "inc/token/Tokenizer.h"
 
 InputHandler* InputHandler::instance = nullptr;
 
@@ -16,6 +18,6 @@ InputHandler *InputHandler::getInstance() {
 }
 
 void InputHandler::readCommand(const std::string &input) {
-    if (!execute(input))
-        std::cout << input << ": command not found" << std::endl;
+    Context context(tokenize(input));
+    execute(context);
 }

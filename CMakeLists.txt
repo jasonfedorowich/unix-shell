@@ -10,8 +10,8 @@ add_subdirectory(lib)
 include_directories("${CMAKE_SOURCE_DIR}/lib")
 
 add_executable(shell ${SOURCE_FILES}
-        lib/src/InputHandler.cpp
-        lib/inc/InputHandler.h)
+        lib/src/input/InputHandler.cpp
+        lib/inc/input/InputHandler.h)
 
 target_link_libraries(shell
         PRIVATE
