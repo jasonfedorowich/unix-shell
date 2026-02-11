@@ -11,10 +11,12 @@
 #include "Action.h"
 #include "EchoAction.h"
 #include "ExitAction.h"
+#include "TypeAction.h"
 
 static std::unordered_map<std::string, Action*> builtInActions = {
     {"exit", new ExitAction()},
-    {"echo", new EchoAction()}
+    {"echo", new EchoAction()},
+    {"type", new TypeAction()}
 };
 
 

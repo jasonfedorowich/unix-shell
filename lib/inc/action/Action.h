@@ -4,8 +4,6 @@
 
 #ifndef SHELL_STARTER_CPP_ACTION_H
 #define SHELL_STARTER_CPP_ACTION_H
-#include <string>
-#include <unordered_map>
 
 #include "inc/command/Context.h"
 
