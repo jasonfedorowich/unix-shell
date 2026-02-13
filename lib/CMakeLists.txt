@@ -25,8 +25,6 @@ set(SOURCE_FILES src/input/InputHandler.cpp
         inc/action/EchoAction.h
         src/command/Context.cpp
         inc/command/Context.h
-        src/action/DefaultAction.cpp
-        inc/action/DefaultAction.h
         src/token/Tokenizer.cpp
         inc/token/Tokenizer.h
         src/token/Token.cpp

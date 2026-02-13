@@ -30,7 +30,6 @@ struct ActionLayer {
 
     std::unordered_map<std::string, Action*> actions;
     ActionLayer* next = nullptr;
-    Action* defaultAction = nullptr;
 
     ActionLayer(const std::unordered_map<std::string, Action*>& actions) {
         this->actions = actions;
@@ -39,9 +38,6 @@ struct ActionLayer {
     ~ActionLayer() {
         for (auto it = actions.begin(); it != actions.end(); ++it) {
             delete it->second;
-        }
-        if (defaultAction != nullptr) {
-            delete defaultAction;
         }
     }
 

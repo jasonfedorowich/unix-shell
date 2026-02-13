@@ -12,7 +12,10 @@
 static void printMessage(std::string& token, Context& context) {
     ActionLayer* actionLayer = context.getActionLayer();
     Action* action = actionLayer->find(token);
-    std::cout << action->getDescription() << std::endl;
+    if (action)
+        std::cout << action->getDescription() << std::endl;
+    else
+        std::cout << token << ": not found" << std::endl;
 
 }
 

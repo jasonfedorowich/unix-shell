@@ -5,9 +5,9 @@
 #include "../../inc/action/Action.h"
 
 #include <algorithm>
+#include <iostream>
 
 #include "inc/action/BuiltIns.h"
-#include "inc/action/DefaultAction.h"
 #include "inc/action/FileAction.h"
 #include "inc/file/File.h"
 #include "inc/token/Tokenizer.h"
@@ -19,7 +19,7 @@ Action* ActionLayer::find(std::string& name) {
     if (next != nullptr) {
         return next->find(name);
     }
-    return defaultAction;
+    return nullptr;
 }
 
 void ActionLayer::execute(Context &context) {
@@ -30,7 +30,7 @@ void ActionLayer::execute(Context &context) {
         next->execute(context);
     }
     else
-        defaultAction->execute(context);
+        std::cout << context.getAction() << ": command not found" << std::endl;
 }
 
 static std::unordered_map<std::string, Action*> toActions(std::vector<File>& files) {
@@ -60,7 +60,6 @@ ActionLayer * buildActionLayer(std::string &path) {
         actionLayer->next = new ActionLayer(actions);
         actionLayer = actionLayer->next;
     }
-    actionLayer->defaultAction = new DefaultAction();
     return parent;
 }
 
