@@ -15,3 +15,7 @@ void EchoAction::execute(Context &context) {
     echo.pop_back();
     std::cout << echo << std::endl;
 }
+
+std::string EchoAction::getDescription() {
+    return actionName + " is a " + where;
+}

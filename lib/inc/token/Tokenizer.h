@@ -11,6 +11,7 @@
 #include "Token.h"
 
 //todo might be easier to handle tokens rather than strings down the road
+std::vector<std::string> tokenize(const std::string& text, char delim);
 std::vector<std::string> tokenize(const std::string& text);
 
 #endif //SHELL_STARTER_CPP_TOKENIZER_H

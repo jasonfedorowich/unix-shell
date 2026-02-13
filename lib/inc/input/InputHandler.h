@@ -6,14 +6,16 @@
 #define SHELL_STARTER_CPP_INPUTHANDLER_H
 #include <string>
 
+struct ActionLayer;
 
 class InputHandler {
     bool killed;
     static InputHandler* instance;
-    InputHandler() : killed(false) {}
+    ActionLayer* actionLayer;
+    InputHandler(ActionLayer* actionLayer) : killed(false), actionLayer(actionLayer) {}
 public:
 
-    void readCommand(const std::string & input);
+    void executeCommand(const std::string & input);
 
     bool isKilled() const{ return this->killed; }
 
@@ -21,7 +23,9 @@ public:
         this->killed = true;
     }
 
-    static InputHandler* getInstance();
+    static InputHandler* getInstance(ActionLayer* actionLayer);
+
+
 };
 
 

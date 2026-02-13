@@ -9,19 +9,21 @@
 
 #include "inc/action/BuiltIns.h"
 
-static void printMessage(std::string& token) {
-    auto it = builtInActions.find(token);
-    if (it != builtInActions.end()) {
-        std::cout << it->first << " is a shell builtin" << std::endl;
-    }else {
-        std::cout << token << ": not found" << std::endl;
-    }
+static void printMessage(std::string& token, Context& context) {
+    ActionLayer* actionLayer = context.getActionLayer();
+    Action* action = actionLayer->find(token);
+    std::cout << action->getDescription() << std::endl;
+
 }
 
 void TypeAction::execute(Context &context) {
     //todo this can be an iteration
     std::string next = context.tokens[1];
-    printMessage(next);
+    printMessage(next, context);
+}
+
+std::string TypeAction::getDescription() {
+    return actionName + " is a " + where;
 }
 
 

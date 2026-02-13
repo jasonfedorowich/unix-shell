@@ -8,3 +8,7 @@
 void DefaultAction::execute(Context &context) {
     std::cout << context.getAction() << ": command not found" << std::endl;
 }
+
+std::string DefaultAction::getDescription() {
+    return actionName + ": not found";
+}

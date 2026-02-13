@@ -7,8 +7,11 @@
 #include "../../inc/input/InputHandler.h"
 
 
-ExitAction::ExitAction() = default;
 
 void ExitAction::execute(Context& context) {
-    InputHandler::getInstance()->kill();
+    context.getInputHandler()->kill();
+}
+
+std::string ExitAction::getDescription() {
+    return actionName + " is a " + where;
 }

@@ -11,7 +11,9 @@ set(HEADER_FILES inc/input/InputHandler.h
         src/action/ExitAction.cpp
         inc/action/ExitAction.h
         src/action/TypeAction.cpp
-        inc/action/TypeAction.h)
+        inc/action/TypeAction.h
+        src/action/FileAction.cpp
+        inc/action/FileAction.h)
 
 set(SOURCE_FILES src/input/InputHandler.cpp
         src/action/Action.cpp
@@ -31,6 +33,10 @@ set(SOURCE_FILES src/input/InputHandler.cpp
         inc/token/Token.h
         src/action/TypeAction.cpp
         inc/action/TypeAction.h
+        inc/file/File.h
+        src/file/File.cpp
+        src/action/FileAction.cpp
+        inc/action/FileAction.h
 )
 
 add_library(lib STATIC ${SOURCE_FILES} ${HEADER_FILES})

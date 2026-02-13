@@ -8,9 +8,14 @@
 #include <vector>
 
 
+struct InputHandler;
+struct ActionLayer;
+
+
 struct Context {
     std::vector<std::string> tokens;
-
+    InputHandler* inputHandler;
+    ActionLayer* actionLayer;
     explicit Context(const std::vector<std::string>& tokens) : tokens(tokens) {}
 
     std::string getAction(){
@@ -23,6 +28,16 @@ struct Context {
         return {tokens.begin() + 1, tokens.end()};
     }
 
+    InputHandler * getInputHandler() {
+        return inputHandler;
+    }
+
+    ActionLayer * getActionLayer() {
+        return actionLayer;
+    }
+
+    void attach(InputHandler* inputHandler) { this->inputHandler = inputHandler; }
+    void attach(ActionLayer* actionLayer) { this->actionLayer = actionLayer; }
 };
 
 

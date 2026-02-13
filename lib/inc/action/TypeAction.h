@@ -9,7 +9,14 @@
 
 class TypeAction : public Action{
 public:
+    TypeAction() : Action() {
+        this->where = "shell builtin";
+        this->actionName = "type";
+    }
+
     void execute(Context &context) override;
+
+    std::string getDescription() override;
 };
 
 

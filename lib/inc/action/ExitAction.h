@@ -10,11 +10,17 @@
 class ExitAction : public Action {
 
 public:
-    ExitAction();
+
+    ExitAction() : Action() {
+        this->where = "shell builtin";
+        this->actionName = "exit";
+    }
 
     ~ExitAction() override = default;
 
     void execute(Context& context) override;
+
+    std::string getDescription() override;
 };
 
 

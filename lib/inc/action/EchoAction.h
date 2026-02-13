@@ -8,8 +8,14 @@
 
 
 class EchoAction : public Action{
-    public:
+public:
+    EchoAction() : Action() {
+        this->where = "shell builtin";
+        this->actionName = "echo";
+    }
     void execute(Context& context) override;
+
+    std::string getDescription() override;
 };
 
 

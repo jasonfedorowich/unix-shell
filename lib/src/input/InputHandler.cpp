@@ -3,21 +3,22 @@
 //
 
 #include "../../inc/input/InputHandler.h"
-#include <iostream>
-#include "../../inc/action/Action.h"
 #include "inc/command/Context.h"
 #include "inc/token/Tokenizer.h"
+#include "inc/action/Action.h"
 
 InputHandler* InputHandler::instance = nullptr;
 
-InputHandler *InputHandler::getInstance() {
+InputHandler *InputHandler::getInstance(ActionLayer* actionLayer) {
     if (instance == nullptr) {
-        instance = new InputHandler();
+        instance = new InputHandler(actionLayer);
     }
     return instance;
 }
 
-void InputHandler::readCommand(const std::string &input) {
+void InputHandler::executeCommand(const std::string &input) {
     Context context(tokenize(input));
-    execute(context);
+    context.attach(this);
+    context.attach(this->actionLayer);
+    this->actionLayer->execute(context);
 }

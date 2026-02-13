@@ -10,7 +10,11 @@
 class DefaultAction : public Action {
 
 public:
+    DefaultAction() = default;
+
     void execute(Context &context) override;
+
+    std::string getDescription() override;
 };
 
 
