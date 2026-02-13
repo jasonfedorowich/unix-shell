@@ -4,6 +4,36 @@
 
 #include "../../inc/file/File.h"
 #include <filesystem>
+#include <unistd.h>
+#include <sys/wait.h>
+#include <iostream>
+
+void File::execute(Context &context) {
+     pid_t pid = fork();
+
+     if (pid == 0) {
+         std::vector<char*> argv;
+
+         for (const auto& token : context.tokens) {
+             argv.push_back(const_cast<char*>(token.c_str()));
+         }
+
+         argv.push_back(nullptr);
+
+         execvp(argv[0], argv.data());
+
+         perror("execv failed");
+         exit(1);
+     }
+     else if (pid > 0) {
+         // Parent process
+         int status;
+         waitpid(pid, &status, 0);
+     }
+     else {
+         perror("fork failed");
+     }
+}
 
 static bool isExecutable(std::filesystem::perms p) {
     namespace fs = std::filesystem;
@@ -11,6 +41,8 @@ static bool isExecutable(std::filesystem::perms p) {
                                  ((p & fs::perms::group_exec) != fs::perms::none) ||
                                  ((p & fs::perms::others_exec) != fs::perms::none);
 }
+
+
 
 std::vector<File> getExecutableFiles(std::string &path) {
     std::vector<File> files;

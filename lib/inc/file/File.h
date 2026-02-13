@@ -8,11 +8,16 @@
 #include <utility>
 #include <vector>
 
+#include "inc/command/Context.h"
+
 struct File {
     std::string fileName;
     std::string path;
     File(std::string fileName, std::string path) : fileName(std::move(fileName)), path(std::move(path)) {
     }
+
+    void execute(Context &context);
+
 };
 
 std::vector<File> getExecutableFiles(std::string& path);

@@ -5,6 +5,7 @@
 #include "../../inc/action/FileAction.h"
 
 void FileAction::execute(Context &context) {
+    file.execute(context);
 }
 
 std::string FileAction::getDescription() {
