@@ -7,6 +7,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <unistd.h>
+#include <sys/wait.h>
 
 void execProcess(Context* context, void(*func)(Context*)) {
     pid_t pid = fork();
