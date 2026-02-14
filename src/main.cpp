@@ -14,6 +14,7 @@ int main() {
   const char* path = std::getenv("PATH");
   std::string pathString(path);
   ActionLayer* actionLayer = buildActionLayer(pathString);
+  //todo handle space input
 
   InputHandler* inputHandler = InputHandler::getInstance(actionLayer);
 

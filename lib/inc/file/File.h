@@ -22,5 +22,7 @@ struct File {
 
 std::vector<File> getExecutableFiles(std::string& path);
 
+std::string getWorkingDirectory();
+
 
 #endif //SHELL_STARTER_CPP_FILE_H

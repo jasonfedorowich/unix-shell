@@ -5,34 +5,24 @@
 #include "../../inc/file/File.h"
 #include <filesystem>
 #include <unistd.h>
-#include <sys/wait.h>
 #include <iostream>
 
+#include "inc/process/Process.h"
+
+static void executeOnPath(Context* context) {
+    std::vector<char*> argv;
+
+    for (const auto& token : context->tokens) {
+        argv.push_back(const_cast<char*>(token.c_str()));
+    }
+
+    argv.push_back(nullptr);
+
+    execvp(argv[0], argv.data());
+}
+
 void File::execute(Context &context) {
-     pid_t pid = fork();
-
-     if (pid == 0) {
-         std::vector<char*> argv;
-
-         for (const auto& token : context.tokens) {
-             argv.push_back(const_cast<char*>(token.c_str()));
-         }
-
-         argv.push_back(nullptr);
-
-         execvp(argv[0], argv.data());
-
-         perror("execv failed");
-         exit(1);
-     }
-     else if (pid > 0) {
-         // Parent process
-         int status;
-         waitpid(pid, &status, 0);
-     }
-     else {
-         perror("fork failed");
-     }
+    execProcess(&context, executeOnPath);
 }
 
 static bool isExecutable(std::filesystem::perms p) {
@@ -69,4 +59,9 @@ std::vector<File> getExecutableFiles(std::string &path) {
     }
 
     return files;
+}
+
+std::string getWorkingDirectory() {
+    std::filesystem::path p = std::filesystem::current_path();
+    return p.string();
 }
