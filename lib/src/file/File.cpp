@@ -62,6 +62,18 @@ std::vector<File> getExecutableFiles(std::string &path) {
 }
 
 std::string getWorkingDirectory() {
+    std::string working_directory = std::filesystem::current_path();
     std::filesystem::path p = std::filesystem::current_path();
     return p.string();
+}
+
+bool directoryExists(std::string &path) {
+    if (std::filesystem::is_directory(path)) {
+        return true;
+    }
+    return false;
+}
+
+void changeWorkingDirectory(std::string &path) {
+    std::filesystem::current_path(path);
 }

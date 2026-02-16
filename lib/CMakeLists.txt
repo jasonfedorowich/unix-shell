@@ -19,6 +19,8 @@ set(HEADER_FILES inc/input/InputHandler.h
         inc/file/File.h
         inc/action/PwdAction.h
         inc/action/FileAction.h
+        src/action/CdAction.cpp
+        inc/action/CdAction.h
 )
 
 set(SOURCE_FILES src/input/InputHandler.cpp
@@ -38,6 +40,8 @@ set(SOURCE_FILES src/input/InputHandler.cpp
         src/action/PwdAction.cpp
         src/process/Process.cpp
         inc/process/Process.h
+        src/action/CdAction.cpp
+        inc/action/CdAction.h
 
 )
 

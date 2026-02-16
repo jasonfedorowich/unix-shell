@@ -24,5 +24,9 @@ std::vector<File> getExecutableFiles(std::string& path);
 
 std::string getWorkingDirectory();
 
+bool directoryExists(std::string& path);
+
+void changeWorkingDirectory(std::string& path);
+
 
 #endif //SHELL_STARTER_CPP_FILE_H
