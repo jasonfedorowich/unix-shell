@@ -13,7 +13,7 @@ void CdAction::execute(Context &context) {
     if (directoryExists(context.getTrail()[0]))
         changeWorkingDirectory(context.getTrail()[0]);
     else
-        std::cout << "cd: " <<context.getTrail()[0] << ": No such file or directory." << std::endl;
+        std::cout << "cd: " <<context.getTrail()[0] << ": No such file or directory" << std::endl;
 }
 
 std::string CdAction::getDescription() {
