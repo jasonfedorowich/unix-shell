@@ -7,11 +7,17 @@
 #include <iostream>
 #include <ostream>
 
+#include "inc/env/Env.h"
 #include "inc/file/File.h"
 
 void CdAction::execute(Context &context) {
-    if (directoryExists(context.getTrail()[0]))
+    if (context.getTrail()[0] == "~") {
+        std::string home = getHome();
+        changeWorkingDirectory(home);
+    }
+    else if (directoryExists(context.getTrail()[0])) {
         changeWorkingDirectory(context.getTrail()[0]);
+    }
     else
         std::cout << "cd: " <<context.getTrail()[0] << ": No such file or directory" << std::endl;
 }

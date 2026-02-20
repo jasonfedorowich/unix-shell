@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include "../lib/inc/input/InputHandler.h"
 #include "../lib/inc/garbage/Garbage.h"
+#include "inc/env/Env.h"
 
 static std::string newLineCharacter = "$ ";
 
@@ -11,8 +12,7 @@ int main() {
   // Flush after every std::cout / std:cerr
   std::cout << std::unitbuf;
   std::cerr << std::unitbuf;
-  const char* path = std::getenv("PATH");
-  std::string pathString(path);
+  std::string pathString = getPath();
   ActionLayer* actionLayer = buildActionLayer(pathString);
   //todo handle space input
 

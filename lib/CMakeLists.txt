@@ -42,6 +42,8 @@ set(SOURCE_FILES src/input/InputHandler.cpp
         inc/process/Process.h
         src/action/CdAction.cpp
         inc/action/CdAction.h
+        src/env/Env.cpp
+        inc/env/Env.h
 
 )
 
