@@ -38,8 +38,10 @@ std::vector<std::string> tokenize(const std::string &text) {
     std::string token;
     while (i < text.size()) {
         if (text[i] == ' ') {
-            tokens.push_back(token);
-            token.clear();
+            if (!token.empty()) {
+                tokens.push_back(token);
+                token.clear();
+            }
         }else if (text[i] == '\'') {
             token += getQuotedString(text, i);
         }
