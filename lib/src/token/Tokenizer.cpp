@@ -21,6 +21,17 @@ std::vector<std::string> tokenize(const std::string &text, char delim) {
     return tokens;
 }
 
+static std::string getQuotedString(const std::string &text, int& i) {
+    i++;
+    std::string str;
+    while (i < text.size() && text[i] != '\'') {
+        str.push_back(text[i]);
+        i++;
+    }
+    return str;
+}
+
+
 std::vector<std::string> tokenize(const std::string &text) {
     int i = 0;
     std::vector<std::string> tokens;
@@ -29,7 +40,10 @@ std::vector<std::string> tokenize(const std::string &text) {
         if (text[i] == ' ') {
             tokens.push_back(token);
             token.clear();
-        }else {
+        }else if (text[i] == '\'') {
+            token += getQuotedString(text, i);
+        }
+        else {
             token.push_back(text[i]);
         }
         i++;
@@ -37,3 +51,4 @@ std::vector<std::string> tokenize(const std::string &text) {
     tokens.push_back(token);
     return tokens;
 }
+
