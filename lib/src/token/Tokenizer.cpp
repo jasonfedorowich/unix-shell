@@ -48,11 +48,21 @@ void Tokenizer::parseSingleQuote() {
     buffer += current;
 }
 
+
 void Tokenizer::parseDoubleQuote() {
     advance();
     std::string current;
     while (peek() != '"') {
-        current.push_back(next());
+        switch (peek()) {
+            case '\\':
+                advance();
+                current.push_back(next());
+                break;
+            default:
+                current.push_back(next());
+                break;
+        }
+
     }
     advance();
     buffer += current;
